@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Panel — GTA-style Cover Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="panel controls" aria-label="Cover controls">
+    <header>
+      <h1>VICE PANEL</h1>
+      <p class="tag">Turn your photos into a Vice City sunset cover. Everything stays on your machine — photos are never uploaded.</p>
+    </header>
+
+    <fieldset>
+      <legend>1 · Layout</legend>
+      <div class="row" id="layouts">
+        <button type="button" data-layout="grid" class="picked" title="Hero photo on top, two panels below">Sunset Grid</button>
+        <button type="button" data-layout="strip" title="Three tall panels side by side">Neon Strip</button>
+        <button type="button" data-layout="split" title="One big panel, two stacked beside it">Poster Split</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>2 · Photos — one per panel, or one for all</legend>
+      <div id="slots"></div>
+      <p class="hint">Pick a photo for a panel, or press “Fill all” on one photo to spread it across every panel. Drag the zoom and position sliders to crop each panel.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>3 · Words</legend>
+      <label>Caption <input id="caption" type="text" maxlength="34" value="SUNSET HEIST"></label>
+      <label>Sub-caption <input id="sub" type="text" maxlength="48" value="ONE LAST SCORE · VICE CITY NIGHTS"></label>
+      <div class="row" id="presets">
+        <button type="button" data-preset="sunset" class="picked" style="--sw1:#ff7a3c;--sw2:#e0218a">Sunset</button>
+        <button type="button" data-preset="neon" style="--sw1:#00e5ff;--sw2:#ff2fb3">Neon Nights</button>
+        <button type="button" data-preset="noir" style="--sw1:#0aff9d;--sw2:#0b3d5c">Palm Noir</button>
+        <button type="button" data-preset="pastel" style="--sw1:#ffb3d9;--sw2:#ff9a5c">Pastel Vice</button>
+      </div>
+      <label class="check"><input id="band" type="checkbox" checked> Bold title band across the bottom</label>
+      <label class="check"><input id="grain" type="checkbox" checked> Sunset grain + vignette</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>4 · Export size</legend>
+      <div class="row" id="sizes">
+        <button type="button" data-size="square" class="picked">1080 × 1080 · Post</button>
+        <button type="button" data-size="portrait">1080 × 1350 · Portrait</button>
+        <button type="button" data-size="wide">1920 × 1080 · Wide</button>
+      </div>
+      <button id="export" type="button" class="export">Export PNG ↓</button>
+      <p id="status" role="status"></p>
+    </fieldset>
+  </section>
+
+  <section class="stage" aria-label="Live cover preview">
+    <div class="canvas-wrap"><canvas id="cover" width="1080" height="1080"></canvas></div>
+    <p class="stage-note">Live preview — what you see is what the PNG will be.</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

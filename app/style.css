@@ -1,0 +1,67 @@
+/* Vice Panel — dark neon editor chrome around a bright sunset cover. */
+:root {
+  --bg: #12081f;
+  --panel: #1d102e;
+  --panel2: #261640;
+  --ink: #f5eefc;
+  --muted: #b9a8d6;
+  --line: #3d2560;
+  --accent: #ff7a3c;
+  --accent2: #ff2fb3;
+  --good: #0aff9d;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--bg); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.app { display: flex; gap: 28px; padding: 22px; max-width: 1480px; margin: 0 auto; align-items: flex-start; }
+.panel { width: 380px; flex: none; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.panel header h1 {
+  margin: 0; font-size: 34px; letter-spacing: 2px; line-height: 1;
+  background: linear-gradient(90deg, #ffb347, #ff5e62 45%, #ff2fb3);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.tag { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin: 0; background: var(--panel2); }
+legend { font-weight: 800; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #ffd166; padding: 0 6px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.row button {
+  font: inherit; font-weight: 700; padding: 9px 10px; border: 1px solid var(--line);
+  border-radius: 8px; background: #160b26; color: var(--ink); cursor: pointer; flex: 1 1 auto;
+}
+.row button:hover { border-color: var(--accent2); }
+.row button.picked { background: linear-gradient(135deg, var(--accent), var(--accent2)); border-color: transparent; color: #fff; }
+#presets button { background: linear-gradient(135deg, var(--sw1), var(--sw2)); color: #14081f; border-color: transparent; }
+#presets button.picked { outline: 3px solid #fff; outline-offset: 1px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; font-size: 13px; }
+label.check { flex-direction: row; align-items: center; gap: 8px; font-weight: 600; margin-top: 8px; }
+input[type=text] { font: inherit; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; background: #12081f; color: var(--ink); }
+input[type=file] { font: inherit; font-size: 12px; }
+.hint { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+.slot { border: 1px solid var(--line); border-radius: 10px; padding: 10px; margin-bottom: 10px; background: #160b26; }
+.slot:last-child { margin-bottom: 0; }
+.slot-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.slot-head strong { font-size: 13px; }
+.slot-head .thumb { width: 44px; height: 34px; object-fit: cover; border-radius: 5px; background: #2b1838; border: 1px solid var(--line); }
+.slot-head .spacer { flex: 1; }
+.mini { font: inherit; font-size: 12px; font-weight: 700; padding: 5px 8px; border: 1px solid var(--line); border-radius: 6px; background: #241338; color: var(--ink); cursor: pointer; }
+.mini:hover { border-color: var(--accent2); }
+.mini.sample { color: #ffd166; }
+.sliders { display: grid; grid-template-columns: 66px 1fr; gap: 4px 10px; align-items: center; font-size: 12px; color: var(--muted); }
+.sliders input[type=range] { width: 100%; accent-color: var(--accent2); }
+.export {
+  width: 100%; margin-top: 10px; font: inherit; font-weight: 800; font-size: 17px; letter-spacing: 1px;
+  padding: 13px; border: 0; border-radius: 10px; cursor: pointer; color: #fff;
+  background: linear-gradient(90deg, #ff7a3c, #ff2fb3 60%, #7b2ff7);
+  box-shadow: 0 6px 24px rgba(255, 47, 179, .45);
+}
+.export:hover { filter: brightness(1.12); }
+#status { margin: 8px 0 0; color: var(--good); font-size: 13px; min-height: 18px; }
+.stage { flex: 1; min-width: 0; position: sticky; top: 22px; }
+.canvas-wrap { background: #000; border-radius: 14px; overflow: hidden; box-shadow: 0 18px 60px rgba(0, 0, 0, .6); line-height: 0; }
+#cover { width: 100%; height: auto; display: block; }
+.stage-note { text-align: center; color: var(--muted); font-size: 13px; }
+body.shot-cover .controls, body.shot-cover .stage-note { display: none; }
+body.shot-cover .app { padding: 0; max-width: none; display: block; }
+body.shot-cover .stage { position: static; }
+body.shot-cover .canvas-wrap { border-radius: 0; box-shadow: none; }
+body.shot-cover #cover { width: 100vw; height: 100vh; object-fit: contain; background: #000; }
+@media (max-width: 900px) { .app { flex-direction: column; } .panel { width: 100%; } .stage { position: static; width: 100%; } }
